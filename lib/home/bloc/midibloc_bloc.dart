@@ -26,7 +26,8 @@ class MidiblocBloc extends Bloc<MidiblocEvent, MidiblocState> {
             var d1 = data[1];
             var d2 = data[2];
 
-            emit(MidiBlocReceivedState(midiNumber: d2, fullData: fullData));
+            emit(MidiBlocReceivedState(
+                midiNumber: d1, fullData: fullData, velocity: d2));
           }
         });
       } catch (e) {

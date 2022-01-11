@@ -84,8 +84,8 @@ class HomeView extends StatelessWidget {
                 if (state is MidiBlocReceivedState) {
                   return Column(
                     children: [
-                      Text(state.midiNumber.toString()),
-                      Text(state.fullData),
+                      Text('Midi number: ${state.midiNumber.toString()}'),
+                      Text('velocity: ${state.velocity}'),
                     ],
                   );
                 }
