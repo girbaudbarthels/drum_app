@@ -61,7 +61,6 @@ class HomeView extends StatelessWidget {
                               .read<DevicesCubit>()
                               .selectDevice(loadedDevice);
 
-                          context.read<MidiblocBloc>().add(MidiblocEvent());
                           Navigator.of(context).pop();
                         },
                         child: Text(loadedDevice.name),
