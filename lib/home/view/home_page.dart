@@ -44,7 +44,6 @@ class HomeView extends StatelessWidget {
           IconButton(
             onPressed: () async {
               await context.read<DevicesCubit>().getDevice();
-
               //for (var loadedDevice in allDevices)
               return showCupertinoModalPopup<void>(
                 context: context,
@@ -53,7 +52,7 @@ class HomeView extends StatelessWidget {
                     if (allDevices!.isEmpty)
                       CupertinoActionSheetAction(
                         onPressed: () {},
-                        child: Text('No devices found'),
+                        child: const Text('No devices found'),
                       ),
                     for (var loadedDevice in allDevices)
                       CupertinoActionSheetAction(
