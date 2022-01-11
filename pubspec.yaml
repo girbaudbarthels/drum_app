@@ -11,9 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.0
-  flutter_localizations:
-    sdk: flutter
-  intl: ^0.17.0
+  flutter_midi_command: ^0.3.7
+
 
 dev_dependencies:
   bloc_test: ^9.0.0

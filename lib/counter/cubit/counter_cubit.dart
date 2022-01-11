@@ -6,10 +6,15 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter_midi_command/flutter_midi_command.dart';
 
-class CounterCubit extends Cubit<int> {
-  CounterCubit() : super(0);
+class CounterCubit extends Cubit<String> {
+  CounterCubit() : super('empty');
 
-  void increment() => emit(state + 1);
-  void decrement() => emit(state - 1);
+  Future<String> getDevice() async {
+    final devices = await MidiCommand().devices;
+    print(devices);
+    emit(devices!.first.name);
+    return devices.first.name;
+  }
 }
