@@ -1,7 +1,6 @@
 import 'package:drumm_app/home/bloc/midibloc_bloc.dart';
 import 'package:drumm_app/home/cubit/devices_cubit.dart';
 import 'package:drumm_app/home/cubit/home_cubit.dart';
-import 'package:drumm_app/home/domain/add_sound_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

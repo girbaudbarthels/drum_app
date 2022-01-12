@@ -59,9 +59,11 @@ class MidiblocBloc extends Bloc<MidiblocEvent, MidiblocState> {
 
   //Play the input sound
   Future<void> playSound(String path, String velocity) async {
-    final audioPlayerZ = AudioPlayer(playerId: path);
+    final audioPlayerZ =
+        AudioPlayer(mode: PlayerMode.LOW_LATENCY, playerId: path);
     final _volume = (int.parse(velocity) / 1270) * 10;
     await audioPlayerZ.setVolume(_volume);
+
     await audioPlayerZ.play(path, isLocal: true);
 
     return;
