@@ -14,10 +14,14 @@ $ flutter run --flavor staging --target lib/main_staging.dart
 $ flutter run --flavor production --target lib/main_production.dart
 ```
 ## Features
-- Receive midi signals
-- Play sounds (WIP)
-- Assign midi signals to a specific sound (WIP)
-- Insert own sounds (UPCOMING)
+- Choose midi player
+- Receive midi signals (Note & velocity)
+- Play sounds by tapping or by sending midi signal
+- Link own (local) sounds to instruments
+- Save presets (UPCOMING)
+- Change instrument midi notes in the UI (UPCOMING)
+- Ability to add more instruments (UPCOMING)
+- Create a nice UI (WIP)
 - Change volume of the application without changing the device volume (WIP)
 
 ## Contributing
