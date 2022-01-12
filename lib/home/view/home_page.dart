@@ -74,22 +74,40 @@ class HomeView extends StatelessWidget {
         ],
       ),
       body: SizedBox.expand(
-        child: Column(
+        child: Row(
           children: [
-            Center(child: Text(device)),
-            BlocBuilder<MidiblocBloc, MidiblocState>(
-              builder: (context, state) {
-                if (state is MidiBlocReceivedState) {
-                  return Column(
-                    children: [
-                      Text('Midi number: ${state.midiNumber.toString()}'),
-                      Text('velocity: ${state.velocity}'),
-                    ],
-                  );
-                }
-                return Container();
-              },
+            Flexible(
+              flex: 4,
+              child: Column(
+                children: [
+                  Center(child: Text(device)),
+                  BlocBuilder<MidiblocBloc, MidiblocState>(
+                    builder: (context, state) {
+                      if (state is MidiBlocReceivedState) {
+                        return Column(
+                          children: [
+                            Text('Midi number: ${state.midiNumber.toString()}'),
+                            Text('velocity: ${state.velocity}'),
+                          ],
+                        );
+                      }
+                      return Container();
+                    },
+                  ),
+                ],
+              ),
             ),
+            Flexible(
+              flex: 8,
+              child: Column(
+                children: [
+                  ListTile(
+                    title: const Text('Snare'),
+                    onTap: () => context.read<MidiblocBloc>().playSnare(),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
