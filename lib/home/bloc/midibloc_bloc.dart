@@ -35,7 +35,7 @@ class MidiblocBloc extends Bloc<MidiblocEvent, MidiblocState> {
     final _midiNote = event.midiData[1];
     final _velocity = event.midiData[2];
     final _path = sounds['$_midiNote'];
-    if (_path != null) playSound(_path, _velocity.toString());
+    if (_path != null && _velocity != 0) playSound(_path, _velocity.toString());
     emit(
       MidiBlocReceivedState(
         midiNumber: event.midiData[1],
@@ -44,6 +44,7 @@ class MidiblocBloc extends Bloc<MidiblocEvent, MidiblocState> {
     );
   }
 
+  //Add the sound to the cache and database
   Future<void> _addSound(MidiblocAddSoundEvent event, Emitter emit) async {
     final _midiNote = event.midiNote;
 
@@ -56,12 +57,12 @@ class MidiblocBloc extends Bloc<MidiblocEvent, MidiblocState> {
     }
   }
 
-  void playSound(String path, String velocity) async {
-    try {
-      await audioPlayer.play(path, isLocal: true);
-    } catch (e) {
-      print(e);
-    }
+  //Play the input sound
+  Future<void> playSound(String path, String velocity) async {
+    final audioPlayerZ =
+        AudioPlayer(mode: PlayerMode.LOW_LATENCY, playerId: path);
+
+    await audioPlayerZ.play(path, isLocal: true);
 
     return;
   }
