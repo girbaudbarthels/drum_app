@@ -1,6 +1,7 @@
 import 'package:drumm_app/home/bloc/midibloc_bloc.dart';
 import 'package:drumm_app/home/cubit/devices_cubit.dart';
 import 'package:drumm_app/home/cubit/home_cubit.dart';
+import 'package:drumm_app/home/domain/add_sound_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -101,9 +102,29 @@ class HomeView extends StatelessWidget {
               flex: 8,
               child: Column(
                 children: [
-                  ListTile(
-                    title: const Text('Snare'),
-                    onTap: () => context.read<MidiblocBloc>().playSnare(),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: 12,
+                      itemBuilder: (context, index) {
+                        final instrument = index + 1;
+                        return ListTile(
+                          title: Text(
+                            'Instrument $instrument | Note: ${59 + instrument}',
+                          ),
+                          //onTap: () => context.read<MidiblocBloc>().playSnare(),
+                          onTap: () => context.read<MidiblocBloc>().playSound(
+                              context
+                                  .read<MidiblocBloc>()
+                                  .sounds['${59 + instrument}'] as String,
+                              "127"),
+                          onLongPress: () => context.read<MidiblocBloc>().add(
+                                MidiblocAddSoundEvent(
+                                  midiNote: '${59 + instrument}',
+                                ),
+                              ),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),

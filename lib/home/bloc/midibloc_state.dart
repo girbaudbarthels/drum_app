@@ -14,3 +14,9 @@ class MidiBlocReceivedState extends MidiblocState {
   final int midiNumber;
   final int velocity;
 }
+
+class MidiBlocInstrumentListState extends MidiblocState {
+  MidiBlocInstrumentListState({required this.instrumentList});
+
+  final Map instrumentList;
+}
